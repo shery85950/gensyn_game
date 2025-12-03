@@ -19,7 +19,13 @@ const DataParticles: React.FC = () => {
   const { positions, colors } = useMemo(() => {
     const pos = new Float32Array(count * 3);
     const cols = new Float32Array(count * 3);
-    const colorPalette = [new THREE.Color(COLORS.text), new THREE.Color(COLORS.teal), new THREE.Color(COLORS.gold)];
+    const colorPalette = [
+        new THREE.Color(COLORS.text), 
+        new THREE.Color(COLORS.teal), 
+        new THREE.Color(COLORS.gold),
+        new THREE.Color(COLORS.violet),
+        new THREE.Color(COLORS.plasma)
+    ];
     
     for (let i = 0; i < count; i++) {
       let x = (Math.random() - 0.5) * 300;
@@ -92,7 +98,7 @@ const DataParticles: React.FC = () => {
         size={0.6}
         vertexColors
         transparent
-        opacity={0.4}
+        opacity={0.5}
         sizeAttenuation
       />
     </points>
@@ -163,6 +169,7 @@ const NetworkCore: React.FC = () => {
                  <meshBasicMaterial color={COLORS.background} />
             </mesh>
              <pointLight intensity={2} color={COLORS.gold} distance={300} decay={2} />
+             <pointLight intensity={1} color={COLORS.violet} distance={300} decay={2} position={[20, 0, 0]} />
         </group>
     );
 };

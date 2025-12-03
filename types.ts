@@ -1,4 +1,3 @@
-
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -7,6 +6,38 @@
 import 'react';
 
 // Fix for missing JSX types in React Three Fiber
+// Augment the 'react' module's JSX namespace
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      ambientLight: any;
+      pointLight: any;
+      directionalLight: any;
+      group: any;
+      mesh: any;
+      points: any;
+      bufferGeometry: any;
+      bufferAttribute: any;
+      pointsMaterial: any;
+      planeGeometry: any;
+      meshStandardMaterial: any;
+      meshBasicMaterial: any;
+      icosahedronGeometry: any;
+      sphereGeometry: any;
+      fog: any;
+      color: any;
+      instancedMesh: any;
+      boxGeometry: any;
+      cylinderGeometry: any;
+      torusGeometry: any;
+      circleGeometry: any;
+      primitive: any;
+      [elemName: string]: any;
+    }
+  }
+}
+
+// Augment the global JSX namespace (for older setups or different TS configs)
 declare global {
   namespace JSX {
     interface IntrinsicElements {
@@ -31,6 +62,7 @@ declare global {
       cylinderGeometry: any;
       torusGeometry: any;
       circleGeometry: any;
+      primitive: any;
       [elemName: string]: any;
     }
   }
@@ -80,16 +112,18 @@ export const COLORS = {
     gold: '#e9c46a',       // Sand Gold
     teal: '#2a9d8f',       // Muted Teal
     danger: '#e76f51',     // Terracotta
-    accent: '#f4a261'      // Burnt Orange
+    accent: '#f4a261',     // Burnt Orange
+    violet: '#c77dff',     // Bright Violet
+    plasma: '#e63946'      // Intense Plasma Red
 };
 
 export const THEME_COLORS = [
     COLORS.teal,    // G
     COLORS.gold,    // E
+    COLORS.plasma,  // N
+    COLORS.violet,  // S
+    COLORS.accent,  // Y
     COLORS.danger,  // N
-    COLORS.accent,  // S
-    COLORS.teal,    // Y
-    COLORS.text,    // N
 ];
 
 export interface ShopItem {

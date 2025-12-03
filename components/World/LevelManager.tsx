@@ -450,16 +450,23 @@ export const LevelManager: React.FC = () => {
                         const lane = availableLanes[i];
                         const laneX = lane * LANE_WIDTH;
                         
+                        // Random Obstacle Glow
+                        const obstacleColors = [COLORS.danger, COLORS.violet, COLORS.plasma, COLORS.teal];
+                        const randomColor = obstacleColors[Math.floor(Math.random() * obstacleColors.length)];
+
                         keptObjects.push({
                             id: uuidv4(),
                             type: ObjectType.OBSTACLE,
                             position: [laneX, OBSTACLE_HEIGHT / 2, spawnZ],
                             active: true,
-                            color: COLORS.danger // Use danger color for obstacle glow
+                            color: randomColor
                         });
 
                         if (Math.random() < 0.3) {
-                             const gemColor = Math.random() > 0.5 ? COLORS.teal : COLORS.gold;
+                             // Random Gem Color
+                             const gemColors = [COLORS.gold, COLORS.teal, COLORS.violet, COLORS.plasma];
+                             const gemColor = gemColors[Math.floor(Math.random() * gemColors.length)];
+                             
                              keptObjects.push({
                                 id: uuidv4(),
                                 type: ObjectType.GEM,
@@ -474,8 +481,10 @@ export const LevelManager: React.FC = () => {
 
             } else {
                 const lane = getRandomLane(laneCount);
-                // Randomize Gem color between Teal and Gold for variety
-                const gemColor = Math.random() > 0.7 ? COLORS.gold : COLORS.teal;
+                // Randomize Gem color more broadly
+                const gemColors = [COLORS.gold, COLORS.teal, COLORS.violet, COLORS.plasma];
+                const gemColor = gemColors[Math.floor(Math.random() * gemColors.length)];
+                
                 keptObjects.push({
                     id: uuidv4(),
                     type: ObjectType.GEM,
