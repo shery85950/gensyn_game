@@ -7,6 +7,7 @@ import 'react';
 import { ThreeElements } from '@react-three/fiber';
 
 // Augment the global JSX namespace to include Three.js elements
+// This ensures TypeScript recognizes <mesh>, <group>, etc.
 declare global {
   namespace JSX {
     interface IntrinsicElements extends ThreeElements {}
